@@ -99,7 +99,7 @@ def main():
         while True: 
 
             try:
-                number = int(input(f"\n{name} Enter the number from the board in which you want to assign {xory}: "))
+                number = int(input(f"\n{name} Enter the number from the board in which you want to put {xory}: "))
             except ValueError:
                 print(f"\nERROR {name} Please Enter Numeric value. Try Again")
                 sleep(3)
@@ -127,12 +127,12 @@ def main():
                 else:
                     if (board[number] == "X"):
                         print(f"\nERROR {name} There is already X in {number + 1}. Try again")
-                        sleep(1.5)
+                        sleep(2.5)
                         printBoard()
                         continue
                     elif(board[number] == "O"):
                         print(f"\nERROR {name} There is already O in {number + 1}. Try again")
-                        sleep(1.5)
+                        sleep(2.5)
                         printBoard()
                         continue
           
