@@ -16,7 +16,7 @@ playerName2 = playerName2.capitalize()
 #So that both the player don't get same name
 while True:
     if playerName2 == playerName1:
-        playerName2 = input("The name is already taken by player 1. Enter other name: ").strip()
+        playerName2 = input("Player 2 that name is already taken by player 1. Enter some other name: ").strip()
         playerName2 = playerName2.capitalize()
     if playerName2 != playerName1:
         break
