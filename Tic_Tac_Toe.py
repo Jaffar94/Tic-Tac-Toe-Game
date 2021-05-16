@@ -5,7 +5,7 @@ game_still_going = True
 
 #Basic UI
 print("\t\tTic Tac Toe Game")
-print("\t\t\t  Made by Jaffar\n")
+print("\t\t\t  Made by: Jaffar\n")
 
 
 #Taking information so that when they play the game again the program should not ask for information again
@@ -13,6 +13,14 @@ playerName1 = input("Enter the name of player 1: ").strip() # strip()this will r
 playerName2 = input("Enter the name of player 2: ").strip()
 playerName1 = playerName1.capitalize()
 playerName2 = playerName2.capitalize()
+#So that both the player don't get same name
+while True:
+    if playerName2 == playerName1:
+        playerName2 = input("The name is already taken by player 1. Enter other name: ").strip()
+        playerName2 = playerName2.capitalize()
+    if playerName2 != playerName1:
+        break
+
 
 XorY1 = input(f"{playerName1} You Choose X or O: ").strip()
 XorY1 = XorY1.upper()
@@ -93,7 +101,7 @@ def main():
             try:
                 number = int(input(f"\n{name} Enter the number from the board in which you want to assign {xory}: "))
             except ValueError:
-                print(f"ERROR {name} Please Enter Numeric value. Try Again")
+                print(f"\nERROR {name} Please Enter Numeric value. Try Again")
                 sleep(3)
                 printBoard()
                 print(f"{name} = {XorY1} and {nameOp} = {XorY2}")
@@ -201,7 +209,7 @@ main()
 
 while True: # So when you run main() one more time in if statement then this will work
 
-    want = input("Click 'Y' and click enter to play again! or click enter to exit this program: ").strip()
+    want = input("Click 'Y' and click enter to play again! or click enter or any key to exit this program: ").strip()
     want = want.upper()
 
     if (want == 'Y'):
