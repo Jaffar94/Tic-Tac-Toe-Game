@@ -13,6 +13,7 @@ playerName1 = input("Enter the name of player 1: ").strip() # strip()this will r
 playerName2 = input("Enter the name of player 2: ").strip()
 playerName1 = playerName1.capitalize()
 playerName2 = playerName2.capitalize()
+
 #So that both the player don't get same name
 while True:
     if playerName2 == playerName1:
@@ -50,7 +51,6 @@ def main():
             '7', '8', '9']
 
 
-
     def checkDraw():
         draw = False
 
@@ -61,6 +61,7 @@ def main():
         else:
             draw = True
 
+            
 
         if (draw == True):
             printBoard()
