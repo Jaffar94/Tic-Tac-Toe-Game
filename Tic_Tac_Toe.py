@@ -6,14 +6,18 @@ game_still_going = True
 #Basic UI
 print("\t\tTic Tac Toe Game")
 print("\t\t\t  Made by: Jaffar\n")
-
+playerName1 = None
+playerName2 = None
 
 #Taking information so that when they play the game again the program should not ask for information again
-playerName1 = input("Enter the name of player 1: ").strip() # strip()this will remove the unwanted spaces
-playerName2 = input("Enter the name of player 2: ").strip()
-playerName1 = playerName1.capitalize()
-playerName2 = playerName2.capitalize()
-
+def playerInput():
+    global playerName1
+    global playerName2
+    playerName1 = input("Enter the name of player 1: ").strip() # strip()this will remove the unwanted spaces
+    playerName2 = input("Enter the name of player 2: ").strip()
+    playerName1 = playerName1.capitalize()
+    playerName2 = playerName2.capitalize()
+playerInput()
 #So that both the player don't get same name
 while True:
     if playerName2 == playerName1:
@@ -21,14 +25,12 @@ while True:
         playerName2 = playerName2.capitalize()
     if playerName2 != playerName1:
         break
-
-
-XorY1 = input(f"{playerName1} You Choose X or O: ").strip()
-XorY1 = XorY1.upper()
+XorY1 = None
 
 #It will ask user to enter x or o only
 while XorY1 != "X" and XorY1 != "O":
-    XorY1 = input(f"{playerName1} you entered wrong input please choose X or O: ").upper()
+    XorY1 = input(f"{playerName1} Only Choose X or O: ").strip()
+    XorY1 = XorY1.upper()
 
 # defining the variable
 XorY2 = None
@@ -37,7 +39,7 @@ XorY2 = None
 # Giving the players x or o
 if XorY1 == 'X':
     XorY2 = 'O'
-elif XorY1 == 'O':
+else:
     XorY2 = 'X'
 
 
@@ -103,7 +105,7 @@ def main():
                 number = int(input(f"\n{name} Enter the number from the board in which you want to put {xory}: "))
             except ValueError:
                 print(f"\nERROR {name} Please Enter Numeric value. Try Again")
-                sleep(3)
+                sleep(1)
                 printBoard()
                 print(f"{name} = {XorY1} and {nameOp} = {XorY2}")
             else:
@@ -112,7 +114,7 @@ def main():
                     break #It will break if there is no problem
                 else:
                     print(f"\nERROR {name} The number {number} is not present in the Board")
-                    sleep(2)
+                    sleep(1)
                     printBoard()
                     continue
             finally: # finally will run if there is continue statement before than too it will run
@@ -128,12 +130,12 @@ def main():
                 else:
                     if (board[number] == "X"):
                         print(f"\nERROR {name} There is already X in {number + 1}. Try again")
-                        sleep(2.5)
+                        sleep(1)
                         printBoard()
                         continue
                     elif(board[number] == "O"):
                         print(f"\nERROR {name} There is already O in {number + 1}. Try again")
-                        sleep(2.5)
+                        sleep(1)
                         printBoard()
                         continue
           
@@ -162,7 +164,6 @@ def main():
         print("-----|-------|------")
         print(f" {board[6]}   |   {board[7]}   |   {board[8]}\n")
         print("--------------------")
-
 
 
     #main function
@@ -199,14 +200,11 @@ def main():
             if game_still_going :
                 checkDraw()
 
-
     # Runnin Main Function
     mainGame()
 
-
 #Running main function
 main()
-
 
 while True: # So when you run main() one more time in if statement then this will work
 
@@ -214,7 +212,14 @@ while True: # So when you run main() one more time in if statement then this wil
     want = want.upper()
 
     if (want == 'Y'):
-        game_still_going = True # This is beingdone so that when you want to play again it should be true
-        main()
+        newGame = input("Do you want to play a new game with different player? Y=Yes, N=No: ").strip()
+        newGame = newGame.upper()
+        if (newGame == "Y"):
+            game_still_going = True
+            playerInput()
+            main()
+        else:
+            game_still_going = True # This is beingdone so that when you want to play again it should be true
+            main()
     else:
         break # To break while loop when not want to play
